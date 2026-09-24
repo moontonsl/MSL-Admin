@@ -1,0 +1,177 @@
+//@use "./global/debug";
+
+/*------------------------------------*\
+  #GLOBAL-STYLING-HERE ↓
+\*------------------------------------*/
+
+.app {
+  color: var(--text-default-default);
+  background-color: var(--background-default-default);
+
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100svh;
+
+
+  header {
+    grid-area: header;
+  }
+
+  main {
+    grid-area: main;
+    min-height: calc(100svh - 56px);
+    position: relative;
+
+      .webBG {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0.5;
+          z-index: 0;
+          background-image: 
+              linear-gradient(180deg, #0A0A0A 0%, rgba(10, 10, 10, 0.50) 25%, rgba(10, 10, 10, 0.20) 50%, rgba(10, 10, 10, 0.50) 75%, #0A0A0A 100%), 
+              url(/webbg2025.png);
+          background-size: cover, cover;
+          background-position: center, center;
+          background-repeat: no-repeat, no-repeat;
+          background-attachment: fixed, fixed;
+          background-color: lightgray;
+      }
+
+      .nextSpoofBG {
+          position: absolute;
+          opacity: 0.5;
+          inset: 0;
+          background: 
+          linear-gradient(180deg, #0A0A0A 0%, rgba(10, 10, 10, 0.50) 25%, rgba(10, 10, 10, 0.20) 50%, rgba(10, 10, 10, 0.50) 75%, #0A0A0A 100%), 
+          url(/NEXTSpoofBG.jpg) lightgray 50% / cover no-repeat;
+      }
+
+      .anniversary9thBG {
+          position: absolute;
+          opacity: 0.5;
+          inset: 0;
+          background: 
+          linear-gradient(180deg, #0A0A0A 0%, rgba(10, 10, 10, 0.50) 25%, rgba(10, 10, 10, 0.20) 50%, rgba(10, 10, 10, 0.50) 75%, #0A0A0A 100%), 
+          url(../js/Pages/Anniversary9th/9thBG.png) lightgray 50% / cover no-repeat;
+      }
+
+      .ff25BG {
+          position: absolute;
+          opacity: 0.5;
+          inset: 0;
+          background: 
+          linear-gradient(180deg, #0A0A0A 0%, rgba(10, 10, 10, 0.50) 25%, rgba(10, 10, 10, 0.20) 50%, rgba(10, 10, 10, 0.50) 75%, #0A0A0A 100%), 
+          url(../js/Pages/FF25/BG.png) lightgray 50% / cover no-repeat;
+      }
+
+      .battleTripsBG {
+        position: absolute;
+        inset: 0;
+        background-image: url(/MPLS16_BG.png);
+        background-repeat: no-repeat;
+        background-size: cover; /* fill without distortion, may crop */
+        background-position: center;
+        background-color: lightgray; /* fallback color */
+      }
+
+      .battleTripsS17BG {
+        position: absolute;
+        inset: 0;
+        background-image: url(/BTMPLS17-BG.png);
+        background-repeat: no-repeat;
+        background-size: cover; /* fill without distortion, may crop */
+        background-position: center;
+        background-color: lightgray; /* fallback color */
+      }
+
+      .labanOBawiBG {
+        position: absolute;
+        inset: 0;
+        background-image: url(/BGSB.png);
+        background-repeat: no-repeat;
+        background-size: cover; /* fill without distortion, may crop */
+        background-position: center;
+        background-color: lightgray; /* fallback color */
+      }
+
+      
+      .mcc2_calendarBG {
+          position: absolute;
+          opacity: 0.5;
+          inset: 0;
+          background: linear-gradient(180deg, #0A0A0A 0%, rgba(10, 10, 10, 0.50) 25%, rgba(10, 10, 10, 0.20) 50%, rgba(10, 10, 10, 0.50) 75%, #0A0A0A 100%), url(/mcc2_calendarBG.png) lightgray 50% / cover no-repeat;
+      }
+
+      .mcc_watchfestBG {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            180deg,
+            rgba(10, 10, 10, 0) 0%, /* Fully transparent black at the very top */
+            rgba(10, 10, 10, 0.1) 20%, /* Slightly visible black */
+            rgba(10, 10, 10, 0.5) 60%, /* More noticeable black */
+            #0A0A0A 100% /* Solid dark black at the very bottom */
+          ),
+          url(/MCC2_BG.png) lightgray 50% / cover no-repeat;
+      }
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #000 !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #000 !important;;
+  opacity: 0.5 !important;;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;;
+}
+
+
+
+
+
+/* Hide scrollbar for all elements */
+
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+
+
+/* Custom scrollbar styles */
+
+.custom-scrollbar::-webkit-scrollbar {
+    height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #1A1919; /* light gray */
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #2F2F2F; /* dark gray */
+    border-radius: 10px;
+}

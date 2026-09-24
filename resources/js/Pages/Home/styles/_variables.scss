@@ -1,0 +1,18 @@
+// _variables.scss
+@use "sass:map";
+
+$padding-block: (
+        default: 1rem,
+        md: 1rem,
+        lg: 2rem,
+        xl: 3rem
+);
+
+@function get-padding($breakpoint) {
+  @return map.get($padding-block, $breakpoint);
+}
+
+$hero-padding: (
+        lg: 88px,
+        xl: 152px
+);

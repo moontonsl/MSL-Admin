@@ -1,0 +1,324 @@
+/* register.module.scss */
+
+/* CSS Variables */
+:root {
+  --text-default-default: #fff; /* White text color */
+  --title-page-size-small: 2.25rem; /* Equivalent to Tailwind's text-4xl or similar */
+  --subtitle-size-small: 1.25rem; /* Equivalent to Tailwind's text-xl or similar */
+  --sds-typography-body-font-family: sans-serif; /* Fallback font family */
+  --sds-typography-body-font-weight-regular: 400; /* Regular font weight */
+  // Add other CSS variables if they exist in your original design
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spark {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(0) scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(5px) scaleX(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px) scaleX(0.8);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow:
+      0 0 10px #00ffcc,
+      0 0 20px #00ffcc,
+      0 0 30px #00ffcc;
+  }
+  50% {
+    box-shadow:
+      0 0 20px #00ffcc,
+      0 0 30px #00ffcc,
+      0 0 40px #00ffcc;
+  }
+  100% {
+    box-shadow:
+      0 0 10px #00ffcc,
+      0 0 20px #00ffcc,
+      0 0 30px #00ffcc;
+  }
+}
+
+/* Custom classes that are difficult to replicate with pure Tailwind utilities or rely on specific CSS properties */
+
+/* For the blur effect on the form container, if it's applied outside */
+/* Example for the backdrop blur on the form container from your first request */
+.form-container-register-base {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  /* Other shared styles like border, shadow, etc. that are not pure Tailwind */
+  border: 1px solid #242424;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(10, 10, 10, 0.5); /* Semi-transparent background */
+}
+
+/* For the lightning bolt effect's clip-path */
+.clip-lightning {
+  clip-path: polygon(40% 0%, 60% 0%, 40% 40%, 70% 40%, 30% 100%, 50% 60%, 20% 60%);
+}
+
+/* If you want to use the original class names and import them */
+.title-register {
+    color: var(--text-default-default);
+    text-align: center;
+    font-family: "Grostek", sans-serif;
+    // font-size: var(--title-page-size-small);
+    font-style: normal;
+    font-weight: var(--weight-bold); /* You'd need to define --weight-bold if not already */
+    line-height: 140%;
+
+    @media (max-width: 768px) {
+    .title-register {
+        font-size: 1.5rem; /* equivalent to Tailwind's text-2xl */
+    }
+    }
+}
+
+.subtitle-register {
+    color: var(--text-default-default);
+    text-align: center;
+    font-family: var(--sds-typography-body-font-family);
+    font-size: var(--subtitle-size-small);
+    font-style: normal;
+    font-weight: var(--sds-typography-body-font-weight-regular);
+    line-height: 140%;
+    margin-bottom: 30px;
+}
+
+.error-message {
+  background-color: #ffdddd;
+  border-left: 6px solid #f44336;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #a94442;
+  font-weight: 500;
+  border-radius: 4px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* For the date input placeholder color on Webkit, if not handled by standard Tailwind */
+.input-field-register[type="date"]::-webkit-input-placeholder {
+  color: #666;
+}
+.input-field-register[type="date"]::-moz-placeholder {
+  color: #666;
+}
+.input-field-register[type="date"]:-ms-input-placeholder {
+  color: #666;
+}
+.input-field-register[type="date"]::placeholder {
+  color: #666;
+}
+
+/* For the date picker icon filter */
+.input-field-register[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(40%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%);
+  background-color: transparent; // Ensure it's transparent if needed
+  color: #242424; // This might be overridden by filter
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* For select options - styling options directly is tricky, but if you want specific options to have a dark background when selected */
+.input-field-register option,
+.input-field-register.suffix-select option,
+.input-field-register.year-level-select option,
+.input-field-register.current-rank-select option,
+.input-field-register.course-select option,
+.input-field-register.in-game-role-select option,
+.input-field-register.main-hero-select option {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+
+/* Neon Button Specific Styles */
+.neon-button {
+  position: relative;
+  padding: 10px 60px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background: none;
+  border: 2px solid #00ffcc;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.5s;
+  overflow: hidden;
+  letter-spacing: 2px;
+  z-index: 1;
+}
+
+.lightning {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  width: 20px;
+  height: 40px;
+  transform: translateX(-50%) rotate(20deg);
+  background: #00ffcc;
+  clip-path: polygon(40% 0%, 60% 0%, 40% 40%, 70% 40%, 30% 100%, 50% 60%, 20% 60%);
+  filter: blur(3px) brightness(1.5);
+  opacity: 0;
+  transition: 0.3s ease;
+  z-index: 0;
+}
+
+.lightning {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightning-show {
+  opacity: 1;
+  animation: spark 0.4s linear;
+}
+
+.blurred {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.5); /* Ensure this matches your bg-black bg-opacity-50 */
+  border-radius: 0.5rem; /* Ensure this matches your rounded-lg */
+}
+
+.neon-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #00ffcc;
+  filter: blur(20px);
+  opacity: 0.7;
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.neon-button:hover {
+  color: #000;
+  background-color: #00ffcc;
+  box-shadow:
+    0 0 5px #00ffcc,
+    0 0 10px #00ffcc,
+    0 0 20px #00ffcc;
+  animation: pulse 1s infinite;
+}
+
+.neon-button:hover::before {
+  filter: blur(20px);
+  opacity: 1;
+}
+
+.electric-wrapper:hover .neon-button::before,
+.electric-wrapper:hover .neon-button::after {
+  animation: spark 0.4s linear infinite;
+}
+
+.input-field-register {
+  border: 1px solid #4b5563; /* gray-600 */
+  background: transparent;
+  color: #fff;
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: #facc15; /* yellow-400 */
+    outline: none;
+    box-shadow: 0 0 0 1px #facc15; /* optional ring */
+  }
+
+  &::placeholder {
+    color: #aaa;
+  }
+}
+
+.required {
+  color: #f47764;
+}
+
+
+.step3-container {
+  // Base styling for the container
+  width: 100%;
+  max-width: 400px; // Equivalent to max-w-[400px]
+  margin-left: auto; // Equivalent to mx-auto
+  margin-right: auto; // Equivalent to mx-auto
+  padding: 2.5rem 1.5rem; // Equivalent to py-10 px-6 (40px top/bottom, 24px left/right)
+  margin-top: 2.5rem; // Equivalent to my-10
+  margin-bottom: 2.5rem; // Equivalent to my-10
+
+  // Background, rounded corners, border, shadow, backdrop-blur
+  background-color: rgba(10, 10, 10, 0.5); // Equivalent to bg-[rgba(10,10,10,0.5)]
+  border-radius: 15px; // Equivalent to rounded-[15px_15px_15px_15px]
+  border: 1px solid #242424; // This forces the border!
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Equivalent to shadow-[0_4px_8px_rgba(0,0,0,0.1)]
+  backdrop-filter: blur(10px); // Equivalent to backdrop-blur-[10px]
+
+  // Flex properties
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; // Equivalent to items-start
+
+  // Transitions and overflow
+  transition: all 0.3s ease-in-out; // Equivalent to transition-all duration-300 ease-in-out
+  overflow: hidden;
+
+  // Responsive overrides (md: equivalent)
+  @media (min-width: 768px) { // Tailwind's md breakpoint
+    max-width: 758px; // Equivalent to md:max-w-[758px]
+    min-height: 850px; // Equivalent to md:min-h-[850px]
+    padding: 3rem 3rem; // Equivalent to md:py-12 md:px-12 (48px)
+  }
+
+  // Ensure this container is relative for absolute positioning of children
+  position: relative;
+}
+
+.neon-flow {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: dashFlow 1.5s linear infinite, neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes neonGlow {
+  0% {
+    stroke: #00ffcc;
+    filter: drop-shadow(0 0 2px #00ffcc) drop-shadow(0 0 4px #00ffcc);
+  }
+  100% {
+    stroke: #00ffff;
+    filter: drop-shadow(0 0 4px #00ffff) drop-shadow(0 0 6px #00ffff);
+  }
+}

@@ -1,0 +1,238 @@
+/* Header.module.scss */
+
+.header {
+    background: var(--background-default-secondary);
+    border-bottom: var(--stroke-border) solid var(--border-default-default);
+    height: 56px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        /* This will push elements to ends */
+        height: 100%;
+        margin-inline: auto;
+        padding-inline: 1rem;
+        max-width: 1536px;
+        position: relative;
+    }
+
+    .menuButtons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        flex-shrink: 0;
+    }
+
+    .menuButton {
+        display: block; // Visible on mobile
+        background: none;
+        border: none;
+        color: inherit;
+        cursor: pointer;
+
+        @media (min-width: 768px) {
+            display: none; // Hidden on desktop
+        }
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        height: 40px;
+
+        a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+    }
+
+    /* Main Navigation */
+    .nav {
+        display: flex;
+        /* Default for desktop */
+        align-items: center;
+        flex-grow: 1;
+        /* Allows nav to take available space */
+        margin-left: 0;
+        /* Adjust as needed */
+        justify-content: flex-start;
+        /* Align nav items to the start */
+
+        @media (max-width: 767px) {
+            /* Mobile navigation specific styles */
+            position: absolute;
+            top: 56px;
+            left: 0;
+            right: 0;
+            background: var(--background-default-secondary);
+            flex-direction: column;
+            padding: 1rem;
+            display: none; // Hidden by default on mobile
+
+            &.open {
+                display: flex; // Shown when menu is open
+                z-index: 999;
+            }
+        }
+    }
+
+    .navList {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding-inline: 2rem;
+        /* Add padding for spacing on desktop */
+
+        @media (max-width: 767px) {
+            /* Mobile nav list specific styles */
+            flex-direction: column;
+            width: 100%;
+            gap: 0.5rem;
+            padding-inline: 0;
+            /* Remove horizontal padding for mobile */
+        }
+
+        li a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: 500;
+
+            &:hover {
+                color: var(--background-brand-default);
+            }
+        }
+    }
+
+    // Account/Login Icon (for both desktop and mobile)
+    .authIcon {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        position: relative; // Crucial for positioning the dropdown
+        z-index: 1001;
+
+    }
+
+    // New styles for the dropdown container and items
+    .accountContainer {
+        position: relative;
+        // Removed inline-block here, flex on authIcon is often enough
+    }
+
+    .signInIcon,
+    .headerAuth {
+        // Apply common styles to both states
+        display: flex; // Use flex to center the icon if it has padding
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: inherit;
+        /* Inherit color from header */
+        padding: 8px; // Increased padding for a larger clickable area around the icon
+        border-radius: 50%; // Keep it circular
+        border: none;
+        outline: none;
+        background: transparent;
+        box-shadow: none;
+        text-decoration: none;
+
+        // Remove fixed height/width if you want the icon size prop to dictate container size
+        // height: 40px;
+        // width: 40px;
+        transition: background-color 0.2s ease; // Smooth hover transition
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.15); // Slightly more noticeable hover
+        }
+    }
+
+    // .headerAuth { /* Styling for the user profile picture link (though now using MdAccountCircle) */
+    //     flex-shrink: 0;
+    //     height: 40px; /* Adjust size as needed */
+    //     width: 40px; /* Ensure square for border-radius */
+    //     display: flex; /* Ensure flex for centering image if needed */
+    //     justify-content: center;
+    //     align-items: center;
+    //     // Styles below are mostly for when a profile picture was used, keeping for reference
+    //     // img {
+    //     //     object-fit: cover;
+    //     //     height: 100%;
+    //     //     width: 100%;
+    //     //     border-radius: 100%; /* Makes it a circle */
+    //     // }
+    //     cursor: pointer; // Since it's now triggering a dropdown
+    //     color: inherit; // Inherit color for the icon
+    //     padding: 5px; // Add padding similar to signInIcon
+    //     border-radius: 50%; // Make it circular
+    //     &:hover {
+    //         background-color: rgba(255, 255, 255, 0.1); // Subtle hover effect
+    //     }
+    // }
+
+    .dropdownMenu {
+        position: absolute;
+        top: calc(100% + 5px);
+        /* Reduced gap from trigger */
+        right: 0;
+        background-color: var(--background-default-secondary);
+        border: var(--stroke-border) solid var(--border-default-default);
+        border-radius: 6px;
+        /* Slightly less rounded corners */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        /* Smaller, softer shadow */
+        min-width: 150px;
+        /* Reduced minimum width */
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        padding: 0;
+    }
+
+    .dropdownItem {
+        padding: 8px 15px;
+        /* Reduced padding for a more compact item */
+        text-decoration: none;
+        color: var(--text-default-primary);
+        font-size: 0.85rem;
+        /* Smaller font size */
+        transition: background-color 0.2s ease, color 0.2s ease;
+        white-space: nowrap;
+        cursor: pointer;
+        text-align: left;
+        width: 100%;
+        background: none;
+        border: none;
+        font-family: inherit;
+        box-sizing: border-box;
+
+        &:hover {
+            background-color: var(--background-default-hover);
+            color: var(--background-brand-default);
+        }
+
+        &:not(:last-child) {
+            border-bottom: 0.5px solid var(--border-default-default);
+            /* Thinner separator */
+        }
+    }
+
+    /* Remove obsolete styles for the old auth buttons (if they exist) */
+    .authButtons,
+    .registerBtn {
+        display: none; // Ensure these are completely hidden/removed from layout
+    }
+}

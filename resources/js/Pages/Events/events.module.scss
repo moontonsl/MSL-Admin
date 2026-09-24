@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; // Bold
+  color: white;
+  font-size: 2.25rem; // Tailwind's text-4xl
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.015em;
+  text-align: center;
+}

@@ -1,0 +1,106 @@
+.slAdmin {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        pointer-events: none;
+        background: url(/noise.svg) lightgray 0% 0% / 100px 100px repeat;
+        mix-blend-mode: overlay;
+        z-index: 1;
+    }
+
+    .topCard {
+        position: relative;
+        border-radius: 8px;
+        background: var(--background-glass-effect);
+        box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(20px);
+        overflow: hidden;
+        z-index: 2;
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            background: var(--border-glass-effect);
+            border-radius: 8px;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        --border-glass-effect: linear-gradient(
+                270deg,
+                rgba(0, 0, 0, 0.4) 0%,
+                rgba(128, 128, 128, 0) 25%,
+                rgba(191, 191, 191, 0) 50%,
+                rgba(255, 255, 255, 0.4) 100%
+        );
+
+        --background-glass-effect: linear-gradient(
+                270deg,
+                rgba(255, 255, 255, 0.12) 0%,
+                rgba(255, 255, 255, 0.03) 100%
+        );
+    }
+
+
+    .profPic {
+        //border-radius: 9999px;
+        //border: 8px solid #F3C718;
+        //background: lightgray 50% / cover no-repeat;
+
+
+    }
+
+
+
+
+    .tableHeader {
+        background: linear-gradient(90deg, rgba(20, 20, 20, 0.00) 0%, #141414 50%, rgba(20, 20, 20, 0.00) 100%);
+
+        .slInput {
+            display: flex;
+            //max-width: 214px;
+            padding: 10px 24px;
+            align-items: center;
+            gap: 10px;
+
+            border-radius: 58px;
+            border: 2px solid #838383;
+            background: rgba(255, 255, 255, 0.10);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

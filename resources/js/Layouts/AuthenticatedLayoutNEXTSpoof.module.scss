@@ -1,0 +1,22 @@
+.nextSpoofLayout {
+  min-height: 100vh;
+  background: url(/NETFLICKS_BG.jpg) no-repeat;
+  background-size: cover;
+  background-position: 20% center; /* desktop: show more left */
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .nextSpoofLayout {
+    background-position: 75% center; /* mobile: show more right */
+  }
+}
+
+
+
+
+.mainContent {
+  position: relative;
+  z-index: 1; /* make sure content appears above background */
+  padding: 20px;
+}

@@ -1,0 +1,108 @@
+// Font Family
+$font-primary: 'Montserrat', sans-serif;
+
+// Font Weights
+$font-weights: (
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700
+);
+
+// Font Size Scale (based on the image)
+$font-sizes: (
+  // Titles
+  title-lg: 2.5rem,    // 40px
+  title-md: 2rem,      // 32px
+  title-sm: 1.5rem,    // 24px
+  
+  // Headers
+  header-lg: 1.875rem, // 30px
+  header-md: 1.5rem,   // 24px
+  header-sm: 1.25rem,  // 20px
+  
+  // Body
+  body-lg: 1.25rem,    // 20px
+  body-md: 1rem,       // 16px
+  body-sm: 0.875rem,   // 14px
+  body-xs: 0.75rem     // 12px
+);
+
+// Line Heights
+$line-heights: (
+  tight: 1.2,
+  normal: 1.5,
+  relaxed: 1.75
+);
+
+// Typography Classes
+.title {
+  font-family: $font-primary;
+  font-weight: map-get($font-weights, bold);
+  line-height: map-get($line-heights, tight);
+
+  &--lg {
+    font-size: map-get($font-sizes, title-lg);
+  }
+
+  &--md {
+    font-size: map-get($font-sizes, title-md);
+  }
+
+  &--sm {
+    font-size: map-get($font-sizes, title-sm);
+  }
+}
+
+.header {
+  font-family: $font-primary;
+  font-weight: map-get($font-weights, semibold);
+  line-height: map-get($line-heights, tight);
+
+  &--lg {
+    font-size: map-get($font-sizes, header-lg);
+  }
+
+  &--md {
+    font-size: map-get($font-sizes, header-md);
+  }
+
+  &--sm {
+    font-size: map-get($font-sizes, header-sm);
+  }
+}
+
+.body {
+  font-family: $font-primary;
+  font-weight: map-get($font-weights, regular);
+  line-height: map-get($line-heights, normal);
+
+  &--lg {
+    font-size: map-get($font-sizes, body-lg);
+  }
+
+  &--md {
+    font-size: map-get($font-sizes, body-md);
+  }
+
+  &--sm {
+    font-size: map-get($font-sizes, body-sm);
+  }
+
+  &--xs {
+    font-size: map-get($font-sizes, body-xs);
+  }
+}
+
+// Font Weight Utilities
+.font-light { font-weight: map-get($font-weights, light); }
+.font-regular { font-weight: map-get($font-weights, regular); }
+.font-medium { font-weight: map-get($font-weights, medium); }
+.font-semibold { font-weight: map-get($font-weights, semibold); }
+.font-bold { font-weight: map-get($font-weights, bold); }
+
+// Line Height Utilities
+.leading-tight { line-height: map-get($line-heights, tight); }
+.leading-normal { line-height: map-get($line-heights, normal); }
+.leading-relaxed { line-height: map-get($line-heights, relaxed); }

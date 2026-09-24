@@ -1,0 +1,61 @@
+.networkSection {
+    background-image: url('../assets/network/webbg2025.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .logoSlider {
+        overflow: hidden;
+        padding: 30px 0;
+        white-space: nowrap;
+        position: relative;
+    }
+
+    .logosSlide {
+        display: inline-block;
+        animation: 45s slide infinite linear;
+
+        &:first-child {
+            animation: 45s slide infinite linear;
+        }
+    }
+
+    .networkLogos {
+        display: inline-block;
+        height: 100px;
+        width: 100px;
+        perspective: 600px;
+        transition: transform 300ms ease, filter 300ms ease;
+
+        @media (min-width: 1280px) {
+            height: 120px;
+            width: 120px;
+        }
+
+        img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            transform-style: preserve-3d;
+            transition: transform 300ms ease, filter 300ms ease;
+        }
+
+        &.isCenter {
+            transform: translateZ(0) scale(1.15) rotateY(0deg);
+            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45));
+
+            img {
+                transform: translateZ(30px);
+            }
+        }
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}

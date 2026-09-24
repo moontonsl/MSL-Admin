@@ -1,0 +1,20 @@
+/*------------------------------------*\
+   #GENERAL-STYLES
+\*------------------------------------*/
+
+/* Improved heading in supported browsers */
+h1, h2, h3, h4, h5, h6 {text-wrap: balance;}
+
+/* improve readability with max-width on paragraphs and lists */
+/* prevent orphans in supported browsers */
+p, li {max-width: 65ch;text-wrap: pretty;}
+
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, .heading {
+    font-family: 'Montserrat', sans-serif;
+}

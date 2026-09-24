@@ -1,0 +1,104 @@
+@use "sass:map";
+@use '../../styles/variables' as *;
+
+.heroSection {
+    .heroWrapper {
+        //padding-block: get-padding(default);
+
+        @media (min-width: 768px) {
+            padding-block: get-padding(md);
+        }
+
+        @media (min-width: 1024px) {
+            padding-block: get-padding(lg);
+            padding-bottom: 0;
+        }
+
+        @media (min-width: 1536px) {
+            padding-block: get-padding(xl);
+        }
+    }
+
+    .heroGrid {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        //min-height: calc(100svh - #{map.get($hero-padding, lg)});
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(90deg, color-mix(in srgb, var(--text-default-default) 0%, transparent) 0%, color-mix(in srgb, var(--text-default-default) 30%, transparent) 25%, color-mix(in srgb, var(--text-default-default) 30%, transparent) 75%, color-mix(in srgb, var(--text-default-default) 0%, transparent) 100%);
+            opacity: 0.3;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(90deg, color-mix(in srgb, var(--text-default-default) 0%, transparent) 0%, color-mix(in srgb, var(--text-default-default) 30%, transparent) 25%, color-mix(in srgb, var(--text-default-default) 30%, transparent) 75%, color-mix(in srgb, var(--text-default-default) 0%, transparent) 100%);
+            opacity: 0.3;
+        }
+
+        @media (min-width: 1024px) {
+            //min-height: calc(100svh - #{map.get($hero-padding, lg)});
+        }
+
+        @media (min-width: 1536px) {
+            display: grid;
+            grid-template-columns: 70vw 1fr;
+            //min-height: calc(100svh - #{map.get($hero-padding, xl)});
+        }
+
+        .bentoBox {
+            display: flex;
+            flex-direction: row;
+            gap: .5rem;
+            padding: .5rem;
+
+            @media (min-width: 1024px) {
+                //flex-direction: row;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            @media (min-width: 1536px) {
+                flex-direction: column;
+            }
+
+            .box {
+                flex-grow: 1;
+                width: 100%;
+                border-radius: 0.5rem;
+                height: 60px;
+                border: 1px solid rgba(0, 0, 0, 0.40);
+                background: linear-gradient(270deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
+                box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.20);
+                backdrop-filter: blur(20px);
+
+                text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+                @media (min-width: 1024px) {
+                    height: 200px;
+                }
+
+                //@media (min-width: 1280px) {
+                //    height: 200px;
+                //}
+
+                @media (min-width: 1536px) {
+                    height: auto;
+                    //height: 100%;
+                }
+            }
+        }
+    }
+}

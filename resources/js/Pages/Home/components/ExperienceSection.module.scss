@@ -1,0 +1,88 @@
+.experienceSection {
+    position: relative;
+
+    .expBackground {
+        background-image: url('../assets/network/webbg2025.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        opacity: 0.5;
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        z-index: 0;
+    }
+
+    // soft blur + dim overlay to lift the foreground
+    .expBlurOverlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1; // sits above background, below content
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        background: rgba(10, 10, 10, 0.35); // subtle darkening for contrast
+        pointer-events: none;
+    }
+
+
+
+
+}
+
+// Experience cards visual style (image + title only)
+.expCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 10px;
+    height: 320px; // fixed so all cards align at the bottom
+    padding: 10px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    outline: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.expImageWrap {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 60px); // leave room for title
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0a0a0a;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+.expCardTitle {
+    margin: 0;
+    padding: 8px 10px 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+    color: #fff;
+    text-transform: uppercase;
+    min-height: 60px; // reserve space so bottoms align
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

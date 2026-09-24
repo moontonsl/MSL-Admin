@@ -1,0 +1,67 @@
+.infoSection {
+    background-image: url('../assets/network/webbg2025.png');
+
+    .infoSun {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1500px;
+        height: 1500px;
+
+        @media (min-width: 640px) {
+            top: 80px;
+        }
+
+        @media (min-width: 768px) {
+            top: 120px;
+        }
+
+        @media (min-width: 1024px) {
+            top: 120px;
+        }
+
+        @media (min-width: 1280px) {
+
+        }
+
+        @media (min-width: 1536px) {
+            top: 63px;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .infoHead {
+        color: var(--background-brand-default);
+    }
+
+    .infoAbout {
+        background: var(--background-brand-default);
+        //background: var(--background-default-tertiary);
+
+        .infoImageWrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .infoHighlight {
+            //color: var(--background-brand-default);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .infoImage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s ease-in-out;
+        }
+
+        span {
+            color: var(--background-default-default);
+        }
+    }
+}

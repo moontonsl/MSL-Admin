@@ -1,0 +1,94 @@
+name: CI/CD Pipeline - Production
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
+          coverage: none
+
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Install NPM Dependencies
+        run: npm install
+
+      - name: Build Frontend Assets
+        run: npm run build
+        env:
+          VITE_APP_URL: ${{ secrets.APP_URL }}
+
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
+            set -e
+            cd /home/moontonslph.org/laravel-app
+
+            # Put application in maintenance mode
+            php artisan down || true
+
+            # Update code
+            git reset --hard
+            git clean -fd
+            git pull origin main
+
+            # Clean and install dependencies
+            rm -rf node_modules
+            composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
+            
+            # Use npm ci for clean, reliable installation from package-lock.json
+            npm ci
+            npm run build
+
+            echo "Deploying new version..."
+            php artisan migrate --force
+            
+            # Optimize caches
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            php artisan cache:clear
+            php artisan config:clear
+            php artisan view:clear
+
+            # Set permissions
+            chmod -R 775 storage bootstrap/cache
+            chown -R daemon:daemon storage bootstrap/cache
+            chmod -R 777 /home/moontonslph.org/laravel-app/storage /home/moontonslph.org/laravel-app/bootstrap/cache
+            
+            # Bring application back up
+            php artisan up
+            
+            # Restart PM2 process
+            if pm2 list | grep -q "my-app"; then
+              pm2 reload my-app
+            else
+              pm2 start npm --name "my-app" -- run start
+            fi
+            
+            echo "Deployment completed successfully"

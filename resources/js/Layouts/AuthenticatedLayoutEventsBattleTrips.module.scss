@@ -1,0 +1,15 @@
+.battleTripsBG {
+  min-height: 100vh; /* fallback */
+  height: 100%;
+  background-image: url(/MPLS16_BG.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: lightgray;
+}
+
+.mainContent {
+  position: relative;
+  z-index: 1; /* make sure content appears above background */
+  padding: 20px;
+}

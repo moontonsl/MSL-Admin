@@ -1,0 +1,17 @@
+.svg{
+    transform: scale(0.5);
+    z-index: 2;
+    position: absolute;
+    top: -250px;
+    height: 1200px;
+    width: 100vw;
+}
+.svg path{
+    fill: #0a0a0a;
+    border: 10px solid #ffffff;
+    transition: all 0.3s ease;
+    stroke: #ffffff; 
+}
+.svg path:hover{
+    fill: #ffffff;
+}

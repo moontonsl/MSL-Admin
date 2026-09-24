@@ -1,0 +1,48 @@
+/vendor
+/node_modules
+/public/hot
+/public/storage
+/public/build
+/storage/*.key
+/storage/pail
+/storage/debugbar
+/storage/logs/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+!storage/framework
+!storage/framework/cache
+!storage/framework/sessions
+!storage/framework/views
+!storage/logs
+!storage/app/google
+/.phpunit.cache
+/.phpunit.result.cache
+/.phpactor.json
+
+# Environment and configs
+.env
+.env.*
+auth.json
+
+# IDEs and editors
+/.idea
+/.vscode
+/.zed
+/.fleet
+/.nova
+
+# OS junk
+.DS_Store
+
+# Log and lock files
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+
+# Local-only dev/sandbox pages
+resources/js/Pages/Campus Tournament/soloplayerSL.jsx
+
+# Homestead
+Homestead.json
+Homestead.yaml

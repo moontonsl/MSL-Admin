@@ -1,0 +1,229 @@
+/* SLStudent.module.scss */
+
+.webBG {
+  position: fixed; /* instead of absolute */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background: 
+    linear-gradient(
+      180deg,
+      #0A0A0A 0%,
+      rgba(10, 10, 10, 0.50) 25%,
+      rgba(10, 10, 10, 0.20) 50%,
+      rgba(10, 10, 10, 0.50) 75%,
+      #0A0A0A 100%
+    ),
+    url('/webbg2025.png') lightgray 50% / cover no-repeat;
+  z-index: 0;
+}
+
+
+.slStudent {
+    position: relative;
+    overflow-x: hidden; // Ensures no horizontal scroll from the noise background
+    overflow-y: hidden; // Ensures no vertical scroll from the noise background
+
+    &::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        pointer-events: none;
+        background: url(/noise.svg) lightgray 0% 0% / 100px 100px repeat;
+        mix-blend-mode: overlay;
+        z-index: 1;
+    }
+}
+
+// Custom classes for the "Glass Effect" styles
+.info-column-frame-335-style {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.40); // Direct RGBA
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%); // Direct gradient
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.20); // Direct shadow
+    backdrop-filter: blur(20px); // Direct backdrop filter
+}
+
+.info-column-frame-337-item-style {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.40); // Direct RGBA
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%); // Direct gradient
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.20); // Direct shadow
+    backdrop-filter: blur(20px); // Direct backdrop filter
+}
+
+.info-column-frame-337-width {
+    width: 264px;
+}
+
+// --- Reusable Glass Card Base Styles ---
+.glass-card-base {
+    position: relative;
+    border-radius: 8px;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
+    box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    overflow: hidden; // Crucial for the pseudo-element border and image clipping
+    z-index: 2; // Ensures content is above the global noise
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        padding: 1px; // This creates the visible border space
+        background: linear-gradient(
+            270deg,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(128, 128, 128, 0) 25%,
+            rgba(191, 191, 191, 0) 50%,
+            rgba(255, 255, 255, 0.4) 100%
+        );
+        border-radius: 8px; // Matches the parent's border-radius
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: 1; // Puts the border on top of the background, but below actual content
+        pointer-events: none;
+    }
+}
+
+// --- Top Card Specific Styles (extends glass-card-base) ---
+.topCard {
+    @extend .glass-card-base;
+    // Any other styles specific to topCard that are not part of glass-card-base
+}
+
+// --- Specific styles for the two main columns in the bottom section ---
+.bottomMainColumn {
+    @extend .glass-card-base; // Apply glass effect to both main columns
+    // Specific height/width for these main columns
+    height: 497px; // As seen in previous code, consistent with image
+}
+
+.bottomMainColumn.left {
+    flex: 1; // Takes up remaining space
+    // No specific width needed if flex: 1 works with the right column's fixed width
+}
+
+.bottomMainColumn.right {
+    width: 495px; // Fixed width as per previous code, matches image ratio
+}
+
+// --- Navbar Gradient for both bottom columns' navs ---
+.bottomNavbarGradient {
+    background: linear-gradient(90deg, rgba(20, 20, 20, 0.00) 0%, #141414 50%, rgba(20, 20, 20, 0.00) 100%);
+    align-items: center; 
+}
+
+// --- Navbar Text Styles ---
+.bottomNavbarTextActive {
+    color: #FFF;
+    font-feature-settings: 'dlig' on;
+    font-family: "Space Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.bottomNavbarTextInactive {
+    @extend .bottomNavbarTextActive; // Inherit common styles
+    opacity: 0.5; // Faded appearance for inactive tabs
+}
+
+// --- Highlight Card Styles (inside the right bottom column) ---
+.highlightCard {
+    @extend .glass-card-base; // Apply glass effect to individual highlight cards
+    height: 165px;
+    aspect-ratio: 149 / 55; // Matches the aspect ratio of the image card
+    // The image itself is absolutely positioned within this, so overflow: hidden is important
+
+    @media (max-width: 767px) {
+        aspect-ratio: 110 / 55;
+    }
+}
+
+.highlightCardImage {
+    width: 503.386px; // This is a specific large width, designed to be clipped by parent overflow
+    height: 529px; // Large height
+    z-index: 0; // Place behind text content
+    position: absolute;
+    right: -50.386px; // Adjust position to show only part of the image
+    bottom: -236px; // Adjust position to show only part of the image
+    transform: scale(2) translateY(10%); // Scale and translate for effect
+    background: url("./assets/layla.png") center / contain no-repeat; // Direct background image
+}
+
+
+@media (max-width: 767px) {
+    .highlightCardImage {
+        width:300px; /* Example: Smaller width for mobile */
+        height: 310px; /* Example: Proportionate height for mobile */
+        right: -50px; /* Example: Adjusted right position for smaller image */
+        bottom: -90px; /* Example: Adjusted bottom position for smaller image */
+        transform: scale(2.5) translateY(13%); /* Example: Adjusted scale and translate for mobile */
+    }
+}
+
+.highlightCardHeroText {
+    color: #FFF;
+    font-feature-settings: 'dlig' on;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "Space Grotesk";
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; // Tight line-height
+}
+
+.highlightCardSubheadingText {
+    color: #FFF;
+    font-feature-settings: 'dlig' on;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "Space Grotesk";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+
+// --- Other existing custom styles (keep these as they are) ---
+.font-dlig {
+    font-feature-settings: 'dlig' on;
+}
+
+.customLargeText {
+    font-size: 48px;
+    line-height: 48px;
+    font-weight: 700;
+    font-family: "Space Grotesk";
+    color: #FFF;
+    font-feature-settings: 'dlig' on;
+}
+
+// Example of how old info-column-frame-337-item-style would now just extend glass-card-base
+.info_column_frame_337_width {
+    width: 264px;
+}
+.info_column_frame_337_item_style { // If these are small glass boxes
+    @extend .glass-card-base;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    flex-shrink: 0;
+}

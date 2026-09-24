@@ -1,0 +1,16 @@
+.inputField {
+  @apply mb-4 p-3 rounded-lg border border-white bg-black bg-opacity-30 text-white text-base text-center placeholder-white;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px #facc15; // Tailwind's yellow-400
+    border-color: #facc15;
+  }
+
+  &:-webkit-autofill {
+    box-shadow: 0 0 0 1000px #000 inset;
+    -webkit-text-fill-color: #fff;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}

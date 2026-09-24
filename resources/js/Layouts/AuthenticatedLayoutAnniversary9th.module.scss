@@ -1,0 +1,26 @@
+.Poster9thBG {
+  min-height: 100vh; /* fallback */
+  height: 100%;
+  background-image: url(../Pages/Anniversary9th/9THBBG.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 100%; /* horizontally center, slightly above bottom */
+  background-color: lightgray;
+}
+
+.GlamUp9thBG {
+  min-height: 100vh; /* fallback */
+  height: 100%;
+  background-image: url(../Pages/Anniversary9th/9THABG.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 100%; /* horizontally center, slightly above bottom */
+  background-color: lightgray;
+}
+
+
+.mainContent {
+  position: relative;
+  z-index: 1; /* make sure content appears above background */
+  padding: 20px;
+}

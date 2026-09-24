@@ -1,0 +1,14 @@
+.loginContainer {
+  display: flex;
+  width: 582px;
+  padding: 40px;
+  align-items: flex-start;
+  border-radius: var(--radius-400);
+  border: 1px solid var(--border-default-default);
+  background: rgba(10, 10, 10, 0.30);
+  backdrop-filter: blur(15px);
+}
+
+.choose-login-title {
+  text-align: left;
+}
